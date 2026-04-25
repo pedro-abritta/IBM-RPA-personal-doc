@@ -43,11 +43,6 @@ Projeto: {{NOME_DO_PROJETO}}
 - {{Risco/problema potencial 1}}
 - {{Risco/problema potencial 2}}
 
-## Histórico de Mudanças
-| Data | Alteração | Responsável |
-|------|-----------|------------|
-| {{YYYY-MM-DD}} | {{Descrição da mudança}} | {{Nome}} |
-
 ## Contato
 - **Responsável**: {{Nome}}
 - **Suporte**: [[03_Solucoes_e_Erros|Guia de troubleshooting]]

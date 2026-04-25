@@ -1,15 +1,13 @@
 ---
 type: projeto
-status: ativo
-cliente: VTAL
+status: finalizado
+cliente: "[[dados_sensiveis#cliente_comodato]]"
 data_produção: 02/2024
 tags:
   - ibm-rpa
   - projeto
-  - vtal
 ---
-
-# Projeto: Comodato Faturas de Energia - VTAL
+# Projeto: Comodato Faturas de Energia
 
 ## Objetivo
 
@@ -21,9 +19,9 @@ Receber mensalmente um arquivo comodato de excel que contenha unidades consumido
 - Valor da Nota Fiscal
 Se houver divergência de informação, aquela fatura não será paga naquele mês. Ao final do processamento é gerado um arquivo excel com o relatório comparativo dos campos informando se houve ou não divergência de informação. 
 
-O projeto possui mais de 90 templates mapeados via regex e OCR, cada um para uma concessionária de energia diferente no país. 
+O projeto possui mais de 90 templates mapeados via [[regex]] e OCR, cada um para uma concessionária de energia diferente no país. 
 
-Antes de começar o mapeamento de cada fatura, o robô insere TODAS as linhas do excel em 2 tabelas de controle. Ao final do do processamento e validação, é inserido o relatório final em uma terceira tabela que é refletida no [Cognos](https://www.ibm.com/br-pt/products/cognos-analytics). 
+Antes de começar o mapeamento de cada fatura, o robô insere TODAS as linhas do excel em 2 tabelas de controle no banco. Ao final do processamento e validação, é inserido o relatório final em uma terceira tabela que é refletida no [Cognos](https://www.ibm.com/br-pt/products/cognos-analytics). 
 
 ## Print da Lógica Principal
 ![[{{fluxo_comodato_vtal.png}}]]
@@ -39,18 +37,21 @@ Antes de começar o mapeamento de cada fatura, o robô insere TODAS as linhas do
 ```
 Projeto: Comodato Faturas de Energia
 ├── Orquestrador: Executor principal. Ativa todos os outros scripts.
-├───── Inserir dados tabela 1: Adiciona registros na tabela 1
-├───── Inserir dados tabela 2: Adiciona registros na tabela 2
-├───── Baixar arquivo: Script para baixar arquivo (http)
+├───── Inserir dados tabela 1: Script para adicionar registros na tabela 1
+├───── Inserir dados tabela 2: Script para adicionar registros na tabela 2
+├───── Baixar arquivo: Script para baixar todas as faturas via http (uma de cada vez)
 ├───── Valida arquivo: Valida se o pdf é válido, se é imagem (sem texto)
-├───── Mapear template: identifica qual concessionária e chama script de acordo
+├───── Mapear template: identifica concessionária, chamar script da mesma e usar regex/OCR para capturar todas as informações necessárias
 ├───── Validar regras: faz match das informações para saber se está divergente
+├───── Gerar relatório final: gerar excel com as informações de divergência ou match de cada linha
 ```
 
 ## Comandos Utilizados
-- [[T_Comando_IBM|Comando 1]]
-- [[T_Comando_IBM|Comando 2]]
-- [[T_Comando_IBM|Comando 3]]
+- [[Regex]]
+- [[02_Base_Conhecimento/IBM_RPA/Fluxo_HTTP_Arquivo|Fluxo HTTP do Arquivo]]
+- [[map_excel_ODBC|Conectar ao ODBC]]
+- [[executar_leitor_SQL|Executar o leitor de SQL]]
+- 
 
 ## Manutenção
 ### Verificações Regulares
@@ -60,11 +61,6 @@ Projeto: Comodato Faturas de Energia
 ### Pontos de Atenção
 - {{Risco/problema potencial 1}}
 - {{Risco/problema potencial 2}}
-
-## Histórico de Mudanças
-| Data | Alteração | Responsável |
-|------|-----------|------------|
-| {{YYYY-MM-DD}} | Criação do projeto | {{Nome}} |
 
 ## Contato
 - **Responsável**: {{Nome}}
