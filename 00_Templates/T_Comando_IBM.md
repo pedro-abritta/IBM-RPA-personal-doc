@@ -9,7 +9,7 @@ tags: [ibm-rpa, comando]
 {{Descrição detalhada do comando, sua finalidade e quando utilizar}}
 
 ## Print do Fluxo
-![[{{inserir_imagem.png}}]]
+
 
 *Legenda: {{Descrever o que aparece na imagem}}*
 
@@ -25,7 +25,7 @@ tags: [ibm-rpa, comando]
 
 ## Links Relacionados
 - [[T_Projeto_RPA|Projetos que usam este comando]]
-- [[{{outro_comando}}|Comandos similares]]
+- 
 
 ## Observações Práticas
 - {{Dica importante 1}}

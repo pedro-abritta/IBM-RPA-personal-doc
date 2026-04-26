@@ -11,7 +11,7 @@ tags:
 
 ## Objetivo
 
-Receber mensalmente um arquivo comodato de excel que contenha unidades consumidoras com faturas de energia em aberto. A automação irá ler cada linha, baixar via [[02_Base_Conhecimento/IBM_RPA/Fluxo_HTTP_Arquivo|Fluxo_HTTP_Arquivo]] e validar 5 informações que estão no excel com as que estão na fatura referente: 
+O cliente submete em um portal o arquivo comodato do mês/ano referente e a automação é ativada via API. Ao receber mensalmente um arquivo comodato de excel que contenha unidades consumidoras com faturas de energia em aberto a automação irá ler cada linha, baixar a fatura via [[02_Base_Conhecimento/IBM_RPA/Fluxo_HTTP_Arquivo|Fluxo_HTTP_Arquivo]] e validar 5 informações que estão no excel com as que estão na fatura referente: 
 - Mês referência
 - Data Vencimento
 - Valor Total
@@ -24,14 +24,9 @@ O projeto possui mais de 90 templates mapeados via [[regex]] e OCR, cada um para
 Antes de começar o mapeamento de cada fatura, o robô insere TODAS as linhas do excel em 2 tabelas de controle no banco. Ao final do processamento e validação, é inserido o relatório final em uma terceira tabela que é refletida no [Cognos](https://www.ibm.com/br-pt/products/cognos-analytics). 
 
 ## Print da Lógica Principal
-![[{{fluxo_comodato_vtal.png}}]]
 
-*Legenda: {{Descrever o fluxo: extração de dados → validação → geração de fatura → envio}}*
-
-## Escopo
-- **Processos**: {{Lista de processos automatizados}}
-- **Volume**: {{Dados/transações por período}}
-- **Sistema**: {{Sistema ou aplicação envolvida}}
+![[relatorio_final_RPA.png]]
+*Legenda: Relatório gerado por RPA após mapeamento de valores
 
 ## Estrutura de Script
 ```
@@ -51,17 +46,17 @@ Projeto: Comodato Faturas de Energia
 - [[02_Base_Conhecimento/IBM_RPA/Fluxo_HTTP_Arquivo|Fluxo HTTP do Arquivo]]
 - [[map_excel_ODBC|Conectar ao ODBC]]
 - [[executar_leitor_SQL|Executar o leitor de SQL]]
-- 
+- [[conectar_microsoft_onedrive|Conectar ao Microsoft OneDrive]]
+- [[enviar_sistema_arquivos|Enviar para o sistema de arquivos]]
+- [[converter_tipo_arquivo|Converter tipo de arquivo via cmd]]
+- [[Query_timestemp|Query para capturar horário específico]]
+- [[remove_zero_esquerda|Remove zero a esquerda por regex usando "replace"]]
+- [[uso_switch_case|Aplicação de switch case]]
 
-## Manutenção
-### Verificações Regulares
-- {{Frequência}}: {{O que verificar}}
-- {{Frequência}}: {{Outro check}}
 
-### Pontos de Atenção
-- {{Risco/problema potencial 1}}
-- {{Risco/problema potencial 2}}
+## Pontos de Atenção
+- Se alguma coluna fundamental do excel vier escrita errada ou faltando, a automação irá notificar o problema e o processo será cancelado. 
+- Se a fatura baixada for imagem ou for ilegível, será mostrado no relatório final e não haverá a análise da mesma. 
+- Todas as faturas em pdf são baixadas em uma VM, agrupadas por ano e mês
+- Todas as faturas são enviadas ao OneDrive para salvar em nuvem
 
-## Contato
-- **Responsável**: {{Nome}}
-- **Suporte**: [[03_Solucoes_e_Erros|Guia de troubleshooting]]

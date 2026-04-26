@@ -13,7 +13,7 @@ tags: [ibm-rpa, projeto]
 {{Descrição clara do objetivo do projeto, o que será automatizado e benefícios esperados}}
 
 ## Print da Lógica Principal
-![[{{fluxo_principal.png}}]]
+
 
 *Legenda: {{Descrever o fluxo: entrada → processamento → saída}}*
 
@@ -31,18 +31,11 @@ Projeto: {{NOME_DO_PROJETO}}
 ```
 
 ## Comandos Utilizados
-- [[T_Comando_IBM|Comando 1]]
-- [[T_Comando_IBM|Comando 2]]
+
 
 ## Manutenção
-### Verificações Regulares
-- {{Frequência}}: {{O que verificar}}
-- {{Frequência}}: {{Outro check}}
 
 ### Pontos de Atenção
 - {{Risco/problema potencial 1}}
 - {{Risco/problema potencial 2}}
 
-## Contato
-- **Responsável**: {{Nome}}
-- **Suporte**: [[03_Solucoes_e_Erros|Guia de troubleshooting]]
