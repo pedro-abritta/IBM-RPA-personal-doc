@@ -22,4 +22,3 @@ Usado para fazer download de arquivo via URL.
 - A variável de output arquivo é o diretório com arquivo baixado
 
 ## Troubleshooting
-- **Problema comum**: {{Solução}}

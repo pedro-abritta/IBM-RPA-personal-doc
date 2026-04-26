@@ -5,7 +5,9 @@ tags: [ibm-rpa, comando]
 # Comando: Obter texto de expressão regular
 
 ## Descrição
-Capturar o texto literal desejado.
+Capturar o texto literal desejado. 
+Site [Regex101](https://regex101.com/) ajuda a testar mas ele não funciona 100% igual ao regex do próprio Studio.
+
 
 ## Print do Fluxo
 ![[regex.png]]
@@ -32,6 +34,6 @@ Capturar o texto literal desejado.
 -  captura mais de uma opção se identificada:  |
 - se for usar sinais gráficos (ponto, vírgula, barra, etc) gosto sempre de usar contra barra (\) antes
 	- Exemplo: \- \/ \(
+- captura tabulação no texto (tab): \t
 
 ## Troubleshooting
-- **Problema comum**: {{Solução}}

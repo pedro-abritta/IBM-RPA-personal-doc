@@ -23,4 +23,3 @@ Cria uma conexão de banco para uma tabela excel.
 - A variável de output arquivo é o diretório com arquivo baixado
 
 ## Troubleshooting
-- **Problema comum**: {{Solução}}

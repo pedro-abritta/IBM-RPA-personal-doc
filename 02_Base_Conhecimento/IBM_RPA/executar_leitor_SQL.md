@@ -25,4 +25,3 @@ Executa um comando SQL à partir de uma conexão de banco.
 - é possível também parametrizar a sheet trazendo dinâmica e não algo estático.
 
 ## Troubleshooting
-- **Problema comum**: {{Solução}}

@@ -7,7 +7,7 @@ tags:
   - ibm-rpa
   - projeto
 ---
-# Projeto: Comodato Faturas de Energia
+# Projeto: Comodato - Faturas de Energia
 
 ## Objetivo
 
@@ -22,6 +22,8 @@ Se houver divergência de informação, aquela fatura não será paga naquele m�
 O projeto possui mais de 90 templates mapeados via [[regex]] e OCR, cada um para uma concessionária de energia diferente no país. 
 
 Antes de começar o mapeamento de cada fatura, o robô insere TODAS as linhas do excel em 2 tabelas de controle no banco. Ao final do processamento e validação, é inserido o relatório final em uma terceira tabela que é refletida no [Cognos](https://www.ibm.com/br-pt/products/cognos-analytics). 
+
+Quantidade de linhas do comodato varia todo mês. A média é entre 5 mil linhas a 8 mil linhas. Em cenários extremos já foram lidas 40 mil linhas.
 
 ## Print da Lógica Principal
 
@@ -52,6 +54,7 @@ Projeto: Comodato Faturas de Energia
 - [[Query_timestemp|Query para capturar horário específico]]
 - [[remove_zero_esquerda|Remove zero a esquerda por regex usando "replace"]]
 - [[uso_switch_case|Aplicação de switch case]]
+- [[incluir_coluna|Incluir Coluna]]
 
 
 ## Pontos de Atenção
@@ -60,3 +63,6 @@ Projeto: Comodato Faturas de Energia
 - Todas as faturas em pdf são baixadas em uma VM, agrupadas por ano e mês
 - Todas as faturas são enviadas ao OneDrive para salvar em nuvem
 
+## Eficiência Atingida
+**Antes**: processo manual para duas pessoas fazerem e gastava de 3 a 4 semanas para validar todas as linhas do excel 
+**Automatizado**: análise e relatório excel final é gerado entre 6 a 10 horas, dependendo da quantidade de linhas do excel. 
